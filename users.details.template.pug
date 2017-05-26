@@ -1,0 +1,41 @@
+.top-content.standard-header
+    .fl-left.top-content-block
+        .title {{userDetails.patient.firstName}} {{userDetails.patient.lastName}}
+    .fl-right.top-content-block
+        a.button-content.edit(ui-sref='app.user-edit({ userId: userDetails.patient.id })') Edit
+.pr-details
+    .pr-details-avatar.size-lg
+        img(ng-src='{{userDetails.patient.imageUrl}}', ng-if='userDetails.patient.imageUrl')
+    .pr-details-info
+        .info-item
+            span.pr-label Email:
+            span.text.field {{userDetails.patient.email}}
+        .info-item(ng-show='userDetails.patient.skype')
+            span.pr-label Skype:
+            span.text.field {{userDetails.patient.skype}}
+        .info-item(ng-show='userDetails.patient.address')
+            span.pr-label Address:
+            span.text.field {{userDetails.patient.address}}
+.button-wrapper
+    a.add-pet-button(ui-sref='app.pet-create({ ownerId: userDetails.patient.id})')
+    .divider
+.pr-list
+    a.pr-list-item(ui-sref='app.pet-details({ petId: pet.id })', ng-repeat='pet in userDetails.patient.pets')
+        .item-avatar-wrapper.size-sm
+            .item-avatar.size-sm(ng-class="{'default-pet': !pet.imageUrl}")
+                img(ng-src='{{pet.imageUrl}}', ng-if='pet.imageUrl')
+        .item-info-wrapper
+            .item-info.fl-left
+                ul
+                    li
+                        span.pr-label Name:
+                        span.field.name {{pet.name}}
+                    li
+                        span.pr-label Breed:
+                        span.field {{pet.breed.name}}
+                    li
+                        span.pr-label Sex:
+                        span.field {{pet.sexName}}
+                    li
+                        span.pr-label Age:
+                        span.field {{pet.birthday | petAge}}

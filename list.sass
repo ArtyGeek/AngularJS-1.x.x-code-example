@@ -1,0 +1,162 @@
+.pr-list
+  overflow-y: auto
+  position: relative
+
+  &-item
+    width: 100%
+    border-bottom: 1px solid #e5e5e5
+    padding: 20px 20px 10px 0
+    min-height: 110px
+    display: block
+
+    &:hover
+      background: $background-item-hover
+
+    .item-avatar-wrapper
+      margin: 0 25px
+      overflow: hidden
+      position: absolute
+
+      +borderRadius(50%)
+      .item-avatar
+        img
+          max-width: 100%
+
+    .item-info-wrapper
+      display: inline-block
+      width: 100%
+      padding-left: 130px
+      min-height: 80px
+
+      .item-info
+        float: left
+        overflow: hidden
+        ul
+          -moz-column-count: 2
+          column-count: 2
+          li
+            overflow: hidden
+            padding: 5px 0
+
+            .field
+              width: calc(100% - 110px)
+              float: right
+              padding-left: 10px
+              color: $color-style-5
+              text-align: left
+
+        .name
+          font-weight: bold
+          a
+            color: $color-style-5
+            text-decoration: none
+            &:hover
+              text-decoration: underline
+          span
+            cursor: pointer
+
+        .contacts
+          padding-top: 15px
+
+          .location
+            display: inline-block
+            padding-left: 20px
+            padding-right: 15px
+            padding-top: 5px
+            font-size: 15px
+            color: $text-color-style-3
+            text-transform: uppercase
+            +backgroundImage($location-dashboard-icon-url, no-repeat, 0 5px, 12px)
+
+          .phone
+            display: inline-block
+            padding-left: 20px
+            font-size: 14px
+            padding-top: 5px
+            color: $text-color-style-3
+            +backgroundImage($phone-dashboard-icon-url, no-repeat, 0 5px, 10px)
+
+  .pr-label
+    width: 110px
+    text-align: right
+    color: #999
+    display: block
+    float: left
+    vertical-align: top
+    font-size: 16px
+
+.pr-list--patients
+  .pr-list-item
+    padding: 20px 20px 16px 0
+
+    .item-info-wrapper
+      position: relative
+
+      &.with-pets
+        padding-right: 204px
+
+    .item-info
+      margin-top: 14px
+      float: none
+
+    .pets-wrapper
+      position: absolute
+      right: 0
+      top: 50%
+      +transformTranslate(0, -50%)
+
+@media screen and (max-width: 767px)
+  .pr-list--patients
+    .pr-list-item
+      .item-info-wrapper.with-pets
+        padding-right: 0
+
+      .pets-wrapper
+        margin-top: 10px
+        position: relative
+        right: auto
+        top: auto
+        +removeTransform()
+        text-align: left
+
+  .pr-list
+    .pr-list-item
+      .item-info ul
+        -moz-column-count: 1
+        column-count: 1
+        & > li > span,
+        & > li > .field
+          float: none
+          width: auto
+          padding: 0
+          text-align: left
+
+@media screen and (max-width: 640px)
+  .pets-wrapper
+    width: 100%
+    margin-top: 20px
+
+@media screen and (max-width: 480px)
+  .pr-list--patients
+    .pr-list-item
+      padding: 20px
+
+  .pr-list-item
+    text-align: center
+    padding: 20px
+
+    .item-avatar-wrapper
+      position: inherit
+
+    .item-info-wrapper
+      padding: 0
+      margin-top: 15px
+      min-height: 10px
+
+      .item-info
+        width: 100%
+
+        .contacts
+          padding-top: 5px
+        ul > li > span
+          text-align: center
